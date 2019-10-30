@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+puts "...creating restaurants"
 10.times do
   restaurant = Restaurant.new(
     name: Faker::Restaurant.name,
@@ -14,4 +14,13 @@
     phone_number: Faker::PhoneNumber.phone_number
   )
   restaurant.save
+end
+puts "...creating reviews"
+35.times do
+  review = Review.new(
+    content: Faker::Restaurant.review,
+    rating: (1..5).to_a.sample,
+    restaurant_id: (1..10).to_a.sample
+  )
+  review.save
 end
